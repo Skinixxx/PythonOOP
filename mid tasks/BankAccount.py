@@ -1,19 +1,19 @@
 class BankAccount:
     def __init__(self,owner,balance=0):
-        self.owner = owner
-        self.balance = max(balance,0)
+        self.__owner = owner
+        self.__balance = max(balance,0)
 
     def deposit(self,amount):
         if amount > 0:
-            self.balance += amount
-            print(f"Пополнение суммой: {amount}. Баланс: {self.balance}")
+            self.__balance += amount
+            print(f"Пополнение суммой: {amount}. Баланс: {self.__balance}")
         else:
-            print(f"Сумма должна быть положительной")
+            print(f"Сумма не положительна")
     
     def withdraw(self,amount):
-        if (self.balance - amount)>=0:
-            self.balance -= amount
-            print(f"Снятие:{amount}. Баланс: {self.balance}")
+        if (self.__balance - amount)>=0:
+            self.__balance -= amount
+            print(f"Снятие:{amount}. Баланс: {self.__balance}")
         else:
             print("Недостаточно средств")
 

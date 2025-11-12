@@ -1,22 +1,16 @@
 class FileManager:
-    def __init__(self,filename):
-        self.filename=filename
+    @staticmethod
+    def write_to_file(filename, content):
+        with open(filename, 'w') as file:
+            file.write(content)
 
-    def read(self):
-        with open(self.filename,'r') as f:
-            return f.read()
-        
-    def write(self,text):
-        with open(self.filename,'w') as f:
-            f.write(text)
-        
-    def append(self,text):
-        with open(self.filename,'a') as f:
-            f.write(text)
+    @staticmethod
+    def read_from_file(filename):
+        try:
+            with open(filename, 'r') as file:
+                return file.read()
+        except FileNotFoundError:
+            return "Файл не найден"
 
-file = FileManager("example.txt")
-file.write("Hi. ")
-file.append("Hola. ")
-print(file.read())
-file.write("Hmmm")
-print(file.read())
+FileManager.write_to_file("example.txt", "Привет, мир!")
+print(FileManager.read_from_file("example.txt"))  
